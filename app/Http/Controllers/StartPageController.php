@@ -9,15 +9,10 @@ class StartPageController extends Controller
 {
     public function index()
     {
-        //$posts = Post::all()->count();
-       // dd($posts);
 
-        // letzten 5 Beiträge
-        $posts = Post::latest()->limit(5)->get();
-
-        // Sortiert nach neuste oben
-
-        // als gelöscht markiert ausblenden
+        $posts = Post::latest()
+            ->limit(5)
+            ->get();
 
 
 

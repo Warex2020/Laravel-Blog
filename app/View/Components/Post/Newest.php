@@ -2,7 +2,11 @@
 
 namespace App\View\Components\Post;
 
+use App\Models\Post;
 use Illuminate\View\Component;
+use Illuminate\Http\Request;
+use illuminate\Database\Eloquent\Builder;
+
 
 class Newest extends Component
 {
@@ -23,13 +27,8 @@ class Newest extends Component
      */
     public function render()
     {
-        $posts = collect([
-            ["title" => "Beitrag 1", "id" => 1],
-            ["title" => "Beitrag 2", "id" => 2],
-            ["title" => "Beitrag 3", "id" => 3],
-            ["title" => "Beitrag 4", "id" => 4],
-            ["title" => "Beitrag 5", "id" => 5],
-        ]);
+
+        $posts = Post::latest()->limit(5)->get();
 
         return view('components.post.newest', compact('posts'));
     }
